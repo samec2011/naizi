@@ -1,0 +1,58 @@
+version: '3.3'
+services:
+
+  db:
+    image: postgres:13.0-alpine
+    restart: always
+    volumes:
+      - db_value:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+
+  backend:
+    build:
+        context: ../backend
+        dockerfile: Dockerfile
+    #image: samec2011/naizi_backend:latest
+    restart: always
+    volumes:
+      - static_value:/app/static/
+      - media_value:/app/backend_media/
+      - redoc:/app/docs/
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+  frontend:
+    build:
+        context: ../frontend
+        dockerfile: Dockerfile
+    #image: samec2011/naizi_frontend:latest
+    volumes:
+      - ../frontend/:/app/result_build/
+    depends_on:
+      - backend
+
+  nginx:
+    image: nginx:1.21.3
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ../frontend/build:/usr/share/nginx/html/
+      - static_value:/var/html/static/
+      - media_value:/var/html/backend_media/
+      - redoc:/usr/share/nginx/html/api/docs/
+#      - ../docs:/usr/share/nginx/html/api/docs/
+      # - ../docs/redoc.html:/usr/share/nginx/html/api/docs/redoc.html
+      # - ../docs/openapi-schema.yml:/usr/share/nginx/html/api/docs/openapi-schema.yml
+    depends_on:
+      - frontend
+
+volumes:
+  db_value:
+  static_value:
+  media_value:
+  redoc:
