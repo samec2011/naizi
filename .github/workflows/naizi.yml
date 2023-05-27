@@ -72,7 +72,7 @@ jobs:
       - tests
       - build_and_push_backend_to_docker_hub
       - build_and_push_frontend_to_docker_hub
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
