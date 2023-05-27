@@ -81,22 +81,21 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          #sudo -S /path/to/command < password.secret
           script: |
-            sudo rm -f .env
-            sudo touch .env
-            sudo chmod 666 .env
-            sudo echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
-            sudo echo DB_NAME=${{ secrets.DB_NAME }} >> .env
-            sudo echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-            sudo echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-            sudo echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-            sudo echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-            sudo echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-            sudo docker compose stop
-            sudo docker compose rm backend
-            sudo docker compose rm frontend
-            sudo docker compose up -d --build
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S rm -f .env
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S touch .env
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S chmod 666 .env
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S docker compose stop
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S docker compose rm backend
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S docker compose rm frontend
+            echo  ${{ secrets.USER_PASSWORD }} | sudo -S docker compose up -d --build
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
