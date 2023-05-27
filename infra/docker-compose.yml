@@ -10,10 +10,10 @@ services:
       - ./.env
 
   backend:
-    build:
-        context: ../backend
-        dockerfile: Dockerfile
-    #image: samec2011/naizi_backend:latest
+    # build:
+    #     context: ../backend
+    #     dockerfile: Dockerfile
+    image: samec2011/naizi_backend:latest
     restart: always
     volumes:
       - static_value:/app/static/
@@ -26,10 +26,10 @@ services:
     env_file:
       - ./.env
   frontend:
-    build:
-        context: ../frontend
-        dockerfile: Dockerfile
-    #image: samec2011/naizi_frontend:latest
+    # build:
+    #     context: ../frontend
+    #     dockerfile: Dockerfile
+    image: samec2011/naizi_frontend:latest
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
