@@ -31,6 +31,6 @@ sudo docker compose exec backend python manage.py loaddata fixtures.json
 ```
 
 ## Авторы
-* [Потапов  Юра](https://github.com/samec2011)
+* [Потапов Юра](https://github.com/samec2011)
 ## Проект доступен по ссылке
 * [сайт na-izi.com](http://na-izi.com/)
