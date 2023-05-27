@@ -81,6 +81,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
+          #sudo -S /path/to/command < password.secret
           script: |
             sudo rm -f .env
             sudo touch .env
