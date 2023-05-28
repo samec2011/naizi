@@ -17,6 +17,8 @@ ALLOWED_HOSTS = [
     "[::1]",
     "backend",
     "85.234.106.227",
+    "na-izi.com",
+    "xn----7sbwdbz.xn--p1ai",
 ]
 
 INSTALLED_APPS = [
