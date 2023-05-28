@@ -12,7 +12,7 @@ DB_ENGINE=django.db.backends.postgresql - указываем, что испол�
 DB_NAME=имя базы данных
 POSTGRES_USER=имя пользователя БД
 POSTGRES_PASSWORD=пароль пользователя БД
-DB_HOST=db - хост БД
+DB_HOST=db - хост БД 
 DB_PORT=5432 - порт подключения к БД
 SECRET_KEY=super-secret-key из settings.py
 ```
