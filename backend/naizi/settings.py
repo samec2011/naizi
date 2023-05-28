@@ -12,13 +12,14 @@ SECRET_KEY = os.getenv("SECRET_KEY", default="super-secret-key")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "[::1]",
-    "backend",
-    "85.234.106.227",
-    "na-izi.com",
-    "xn----7sbwdbz.xn--p1ai",
+    # "localhost",
+    # "127.0.0.1",
+    # "[::1]",
+    # "backend",
+    # "85.234.106.227",
+    # "na-izi.com",
+    # "xn----7sbwdbz.xn--p1ai",
+    "*",
 ]
 
 INSTALLED_APPS = [
